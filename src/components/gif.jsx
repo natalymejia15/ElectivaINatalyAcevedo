@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getGif } from "../helpers/getGif";
 
 export const Gif = () => {
-  const dataOptions = ["cat", "dog", "cow", "horse", "donkey", "monkey"];
+  const dataOptions = ["Gato", "Perro", "Vaca", "Caballo", "Burro", "Monkey"];
 
   const [category, setCategory] = useState(dataOptions[0]);
 
