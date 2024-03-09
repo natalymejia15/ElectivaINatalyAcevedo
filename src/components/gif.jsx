@@ -26,31 +26,53 @@ export const Gif = () => {
   };
   return (
     <>
-      <div>
-        <h1>Multiples opciones de gifs</h1>
-
-        <label htmlFor="data">Seleccione la categoria de animal:</label>
-        <select
-          name="category"
-          id="category"
-          onChange={onSelectChange}
-          className="form-control"
-        >
-          {dataOptions.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <div>
-          <h3>
-            Animal: <span> {resultData.name} </span>
-          </h3>
-          {resultData.gifs.map((gif, index) => (
-            <div key={index}>
-              <img src={gif} alt={`Gif ${index + 1}`} />
-            </div>
-          ))}
+      <div
+        className="container-fluid"
+        style={{ background: "purple", margin: "5px 0px 5px 0px" }}
+      >
+        <div className="container text-center">
+          <h1 className="mb-4" style={{ color: "white" }}>
+            Multiples opciones de gifs
+          </h1>
+          <div className="row mb-3">
+            <select
+              name="category"
+              id="category"
+              onChange={onSelectChange}
+              className="form-control"
+              value={resultData.name}
+            >
+              <option>Seleccione un animal</option>
+              {dataOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="row">
+            {resultData.name !== "Seleccione el animal" && (
+              <>
+                <h3
+                  className="mb-4"
+                  style={{ color: "white", borderBottom: "5px solid white" }}
+                >
+                  <span> {resultData.name} </span>
+                </h3>
+                {resultData.gifs.map((gif, index) => (
+                  <div className="col mb-4">
+                    <div key={index}>
+                      <img
+                        src={gif}
+                        alt={`Gif ${index + 1}`}
+                        style={{ width: "280px", height: "350px" }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>
