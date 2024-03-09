@@ -4,7 +4,9 @@ import { getGif } from "../helpers/getGif";
 export const Gif = () => {
   const dataOptions = ["Gato", "Perro", "Vaca", "Caballo", "Burro", "Mono"];
 
-  const [category, setCategory] = useState(dataOptions[0]);
+  const [category, setCategory] = useState(
+    dataOptions[{ name: "Seleccione un animal"}]
+  );
 
   const [resultData, setResultData] = useState({
     name: "",
@@ -24,6 +26,7 @@ export const Gif = () => {
   const onSelectChange = (event) => {
     setCategory(event.target.value);
   };
+
   return (
     <>
       <div
@@ -42,7 +45,7 @@ export const Gif = () => {
               className="form-control"
               value={resultData.name}
             >
-              <option>Seleccione un animal</option>
+              <option selected>Seleccione un animal</option>
               {dataOptions.map((option, index) => (
                 <option key={index} value={option}>
                   {option}
@@ -51,7 +54,7 @@ export const Gif = () => {
             </select>
           </div>
           <div className="row">
-            {resultData.name !== "Seleccione el animal" && (
+            {resultData.name !== "Seleccione un animal" && (
               <>
                 <h3
                   className="mb-4"
